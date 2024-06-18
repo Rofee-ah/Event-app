@@ -1,12 +1,12 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const venueSchema = new mongoose.Schema({
-    venueName: {type: String, unique: true},
+const venueSchema = new mongoose.Schema(
+  {
+    venueName: { type: String, unique: true },
     image: String,
     location: String,
-    isAvailable: Boolean
-
-},
-{timestamps: true}
-)
-module.exports = mongoose.model('venue', venueSchema)
+    isAvailable: Boolean,
+  },
+  { timestamps: true }
+);
+module.exports = mongoose.model('venue', venueSchema);

@@ -14,13 +14,17 @@ import EventVenuePage from './pages/EventVenuePage';
 import SecurityPersonnelPage from './pages/SecurityPersonnelPage';
 import McPage from './pages/McPage';
 import CateringPage from './pages/CateringPage';
-import All from './components/All';
+// import All from './components/All';
 import DjPage from './pages/DjPage';
 import DancerPage from './pages/DancerPage';
 import ComedianPage from './pages/ComedianPage';
 import MusicPage from './pages/MusicPage';
 import CateringServicePage from './pages/CateringServicePage';
 import Alls from './components/Alls';
+import UpcomingEventPage from './pages/UpcomingEventPage';
+import DiscoverVenues from './pages/DiscoverVenues';
+import IndividualEvent from './pages/IndividualEvent';
+import IndividualVenue from './pages/IndividualVenue';
 function App() {
   return (
     <>
@@ -53,12 +57,28 @@ function App() {
               />
               <Route path='/services/entertainment/all' element={<Alls />} />
               <Route path='/services/entertainment/dj' element={<DjPage />} />
-              <Route path='/services/entertainment/dancer' element={<DancerPage />} />
-              <Route path='/services/entertainment/comedian' element={<ComedianPage />} />
-              <Route path='/services/entertainment/music' element={<MusicPage />} />
+              <Route
+                path='/services/entertainment/dancer'
+                element={<DancerPage />}
+              />
+              <Route
+                path='/services/entertainment/comedian'
+                element={<ComedianPage />}
+              />
+              <Route
+                path='/services/entertainment/music'
+                element={<MusicPage />}
+              />
               <Route path='/services/eventVenue' element={<EventVenuePage />} />
               <Route path='/profile' element={<ProfilePage />} />
               <Route path='/events/page' element={<AllEventPage />} />
+              <Route
+                path='/event/upcoming-event'
+                element={<UpcomingEventPage />}
+              />
+              <Route path='/venue/discover' element={<DiscoverVenues />} />
+              <Route path='/event/:id' element={<IndividualEvent />} />
+              <Route path='/venue/:id' element={<IndividualVenue />} />
             </Routes>
           </div>
         </div>

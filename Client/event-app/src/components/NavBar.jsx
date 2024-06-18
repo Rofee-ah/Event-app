@@ -1,22 +1,13 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import {
   Navbar,
-  MobileNav,
   Typography,
-  Button,
   IconButton,
-  Card,
   Collapse,
 } from '@material-tailwind/react';
 
 const NavBar = () => {
-  const { pathname } = useLocation();
-  // if (location.pathname === '/') {
-  //   console.log("line 15");
-  //   console.log(location.pathname)
-  //   console.log(typeof location.pathname)
-  // }
   const [openNav, setOpenNav] = useState(false);
   useEffect(() => {
     window.addEventListener(
@@ -30,7 +21,8 @@ const NavBar = () => {
         as='li'
         variant='small'
         color='blue-gray'
-        className='p-1 font-normal'>
+        className='p-1 font-normal'
+      >
         <a href='/events/page' className='flex items-center tablet:text-lg'>
           Event
         </a>
@@ -39,7 +31,8 @@ const NavBar = () => {
         as='li'
         variant='small'
         color='blue-gray'
-        className='p-1 font-normal'>
+        className='p-1 font-normal'
+      >
         <a href='/services' className='flex items-center tablet:text-lg'>
           Services
         </a>
@@ -48,7 +41,8 @@ const NavBar = () => {
         as='li'
         variant='small'
         color='blue-gray'
-        className='p-1 font-normal'>
+        className='p-1 font-normal'
+      >
         <a href='/profile' className='flex items-center  tablet:text-lg'>
           Profile
         </a>
@@ -57,13 +51,17 @@ const NavBar = () => {
   );
 
   return (
-    <div className='-m-6 max-h-[768px] w-[calc(100%+48px)] overflow-scroll mb-5 text-black' style={{backgroundColor:''}}>
+    <div
+      className='-m-6 max-h-[768px] w-[calc(100%+48px)] overflow-scroll mb-5 text-white bg-black'
+      style={{ backgroundColor: '' }}
+    >
       <Navbar className='sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 tablet:px-8 tablet:py-4'>
         <div className='flex items-center justify-between text-black'>
           <Typography
             as='a'
             href='/'
-            className='mr-4 cursor-pointer py-1.5 font-medium tablet:text-xl'>
+            className='mr-4 cursor-pointer py-1.5 font-medium tablet:text-xl'
+          >
             Event App
           </Typography>
           <div className='flex items-center gap-4'>
@@ -72,7 +70,8 @@ const NavBar = () => {
               variant='text'
               className='ml-auto h-6 w-6 text-black hover:bg-transparent focus:bg-transparent active:bg-transparent tablet:hidden'
               ripple={false}
-              onClick={() => setOpenNav(!openNav)}>
+              onClick={() => setOpenNav(!openNav)}
+            >
               {openNav ? (
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -80,7 +79,8 @@ const NavBar = () => {
                   className='h-6 w-6'
                   viewBox='0 0 24 24'
                   stroke='currentColor'
-                  strokeWidth={2}>
+                  strokeWidth={2}
+                >
                   <path
                     strokeLinecap='round'
                     strokeLinejoin='round'
@@ -93,7 +93,8 @@ const NavBar = () => {
                   className='h-6 w-6'
                   fill='none'
                   stroke='currentColor'
-                  strokeWidth={2}>
+                  strokeWidth={2}
+                >
                   <path
                     strokeLinecap='round'
                     strokeLinejoin='round'

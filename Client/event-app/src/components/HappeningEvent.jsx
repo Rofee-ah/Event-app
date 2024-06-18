@@ -1,9 +1,8 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import image from '../assets/ven 7.jpeg';
-import { IoLocationSharp } from "react-icons/io5";
-
-
+// import image from '../assets/ven 7.jpeg';
+// import { IoLocationSharp } from 'react-icons/io5';
 
 const HappeningEvent = () => {
   const [event, setEvent] = useState([]);
@@ -17,6 +16,7 @@ const HappeningEvent = () => {
   useEffect(() => {
     getEvent();
   }, []);
+
   return (
     <>
       {loading ? (
@@ -26,29 +26,48 @@ const HappeningEvent = () => {
           {event.length > 0 && (
             <div className=' w-full'>
               {event.map((item) => (
-                <div key={item._id}>
-                  <img
-                    className='rounded-lg overflow-hidden shadow-lg w-[500px] tablet:w-[1000px] mx-auto tablet:h-72 h-48  mt-3 object-cover'
-                    src={image}
-                    alt=''
-                  />
-                    <h2 className='hidden tablet:flex tablet:text-3xl mt-2 justify-center'>{item.eventName}</h2>
-                  <div className=' items-center flex tablet:hidden  justify-between mt-3'>
-                    <div className='mb-2 flex flex-col'>
-                      <h3 className=' font-semibold  text-lg'>
-                      {item.eventName}
-                      </h3>
-                      <p className='flex items-center gap-1 '> <IoLocationSharp color='red' /> {item.location} </p>
-                    </div>
-                    <div className='flex flex-col items-end'>
-                    <p className='text-gray-700 text-base'>
-                      Entry:$50
+                <div
+                  key={item?.id}
+                  className={`h-100 w-full bg-cover bg-center p-40`}
+                  // style={{ backgroundImage: `url(${image})` }}
+                  style={{ backgroundColor: 'gray' }}
+                >
+                  <div className='flex flex-col items-center justify-center'>
+                    <h1 className='mb-2 text-4xl font-bold text-center text-white'>
+                      Event App
+                    </h1>
+                    <p className='text-lg text-center text-white'>
+                      Find out about the next event happening around you
                     </p>
-                    <p className='text-gray-700 text-base '>Time:18:00 - 22:00</p>
-                    </div>
-                    
                   </div>
                 </div>
+                // <div key={item._id}>
+                //   <img
+                //     className='rounded-lg overflow-hidden shadow-lg w-[500px] tablet:w-[1000px] mx-auto tablet:h-72 h-48  mt-3 object-cover'
+                //     src={image}
+                //     alt=''
+                //   />
+                //   <h2 className='hidden tablet:flex tablet:text-3xl mt-2 justify-center'>
+                //     {item.eventName}
+                //   </h2>
+                //   <div className=' items-center flex tablet:hidden  justify-between mt-3'>
+                //     <div className='mb-2 flex flex-col'>
+                //       <h3 className=' font-semibold  text-lg'>
+                //         {item.eventName}
+                //       </h3>
+                //       <p className='flex items-center gap-1 '>
+                //         {' '}
+                //         <IoLocationSharp color='red' /> {item.location}{' '}
+                //       </p>
+                //     </div>
+                //     <div className='flex flex-col items-end'>
+                //       <p className='text-gray-700 text-base'>Entry:$50</p>
+                //       <p className='text-gray-700 text-base '>
+                //         Time:18:00 - 22:00
+                //       </p>
+                //     </div>
+                //   </div>
+                // </div>
               ))}
             </div>
           )}

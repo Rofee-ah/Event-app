@@ -1,16 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import image from '../assets/ven3.jpeg';
 import { IoLocationSharp } from 'react-icons/io5';
 
-
-// import image from '../assets/events.jpeg';
-// import { IoLocationSharp } from 'react-icons/io5';
-
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -28,7 +21,7 @@ const EventVenue = () => {
   }, []);
   return (
     <>
-    <h3 className=' font-semibold'>Event Venue</h3>
+      <h3 className=' font-semibold'>Event Venue</h3>
       {loading ? (
         <p>loading ...</p>
       ) : (
@@ -45,12 +38,10 @@ const EventVenue = () => {
                     />
                     <h3 className='text-lg font-semibold'>{item.venueName}</h3>
                     <p className='flex items-center gap-1'>
-                        {' '}
-                        <IoLocationSharp color='red' /> {item.location}{' '}
-                      </p>
+                      {' '}
+                      <IoLocationSharp color='red' /> {item.location}{' '}
+                    </p>
                     <p>Entry: ${item.price} </p>
-                  
-
                   </div>
                 ))}
               </div>
@@ -72,12 +63,11 @@ const EventVenue = () => {
                         {item.venueName}
                       </h3>
                       <p>Entry: ${item.price} </p>
-                      
                     </div>
                     <p className='flex items-center gap-1'>
-                        {' '}
-                        <IoLocationSharp color='red' /> {item.location}{' '}
-                      </p>
+                      {' '}
+                      <IoLocationSharp color='red' /> {item.location}{' '}
+                    </p>
                   </div>
                 ))}
               </div>

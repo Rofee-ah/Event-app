@@ -1,37 +1,62 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import GetUpcomingEvent from '../components/GetUpcomingEvent';
 import HappeningEvent from '../components/HappeningEvent';
 import DiscoverVenue from '../components/DiscoverVenue';
 import NavBar from '../components/NavBar';
-import { LuPlus } from "react-icons/lu";
 
 const EventPage = () => {
+  const navigate = useNavigate();
+
+  const loadMoreEvents = () => {
+    navigate('/event/upcoming-event');
+  };
+  const discoverMoreVenues = () => {
+    navigate('/venue/discover');
+  };
+
   return (
     <>
       <div className=' h-full'>
         <NavBar />
-        <div className='mb-3 mt-3'>
-          <h1 className='flex justify-start tablet:justify-center font-semibold text-lg tablet:text-3xl tablet:mb-10'>
+        <div className='mt-3'>
+          <h1 className='tablet:justify-center font-semibold text-lg tablet:mb-5'>
             Happening Now!!!
           </h1>
           <HappeningEvent />
         </div>
-        <div className='mb-5 text-left tablet:flex  tablet:flex-col gap-3'>
-          <div className='flex flex-row justify-between'>
-          <p className='text-lg font-semibold tablet:text-3xl tablet:ml-[213px]'>Upcoming Event</p>
-          <button className='flex flex-row tablet:hidden items-center gap-1' >See All <LuPlus className='bg-slate-200 rounded-sm p-0.5'/></button>
+        <div className='mb-5 text-left gap-3 mt-4'>
+          <div className='flex flex-row justify-between items-center mb-4'>
+            <p className='text-lg font-semibold'>Upcoming Event</p>
+            <button
+              type='button'
+              className='items-center text-xs bg-black text-white p-2 rounded-md'
+              onClick={loadMoreEvents}
+              aria-hidden
+            >
+              See More Events
+            </button>
           </div>
           <GetUpcomingEvent />
-          {/* <FaArrow/> */}
         </div>
-        <div className='mb-5 text-left tablet:flex  tablet:flex-col gap-3'>
-          <div className='flex flex-row justify-between'>
-          <p className='text-lg font-semibold tablet:text-3xl tablet:ml-[213px]'>Discover Venues</p>
-          <button className='flex flex-row tablet:hidden items-center gap-1' >See All <LuPlus className='bg-slate-200 rounded-sm p-0.5' /></button>
+        <hr />
+        <div className='mt-4 mb-5 text-left gap-3'>
+          <div className='flex flex-row justify-between items-center mb-5'>
+            <p className='text-lg font-semibold mt-4'>Discover Venues</p>
+            <button
+              type='button'
+              className='items-center text-xs bg-black text-white p-2 rounded-md'
+              onClick={discoverMoreVenues}
+              aria-hidden
+            >
+              See More Venues
+            </button>
           </div>
           <DiscoverVenue />
         </div>
-       
+        <hr />
       </div>
     </>
   );

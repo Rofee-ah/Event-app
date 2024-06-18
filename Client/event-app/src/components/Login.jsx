@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -13,6 +14,7 @@ const Login = () => {
   let fieldsState = {};
   fields.forEach((field) => (fieldsState[field.id] = ''));
   const [formData, setFormData] = useState(fieldsState);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -20,6 +22,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.post(
         'http://localhost:8080/api/user/login',
@@ -29,9 +32,12 @@ const Login = () => {
         toast.success('Successfully logged in');
         localStorage.setItem('userToken', response.data.generateToken);
         localStorage.setItem('userName', response.data.other.firstname);
+        localStorage.setItem('userEmail', response.data.other.email);
         navigate('/');
       }
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       toast.error(error.response.data);
     }
   };
@@ -57,8 +63,9 @@ const Login = () => {
         <div className='border border-purple-600 rounded flex justify-center mt-3'>
           <button
             type='submit'
-            className=' text-purple-600 hover:text-purple-500  py-2 '>
-            Submit
+            className=' text-purple-600 hover:text-purple-500  py-2 '
+          >
+            {loading ? 'Loading...' : 'Submit'}
           </button>
         </div>
       </form>

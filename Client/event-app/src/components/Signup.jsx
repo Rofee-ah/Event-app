@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -11,22 +12,26 @@ const Signup = () => {
   let fieldsState = {};
   fields.forEach((field) => (fieldsState[field.id] = ''));
   const [formData, setFormData] = useState(fieldsState);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.post(
         'http://localhost:8080/api/user/register',
         formData
       );
-      if (response.status === 200) {
+      if (response.data._id) {
+        setLoading(false);
         toast.success('Account successfully created, proceed to login');
-        navigate('/');
+        navigate('/login');
       }
     } catch (error) {
+      setLoading(false);
       toast.error(error.response.data);
     }
   };
@@ -49,11 +54,12 @@ const Signup = () => {
         ))}
       </div>
       <div className=' border border-purple-600 rounded flex justify-center mt-2'>
-      <button
-            type='submit'
-            className=' text-purple-600 hover:text-purple-500  py-2 '>
-            Submit
-          </button>
+        <button
+          type='submit'
+          className=' text-purple-600 hover:text-purple-500  py-2 '
+        >
+          {loading ? 'Loading...' : 'Submit'}
+        </button>
       </div>
     </form>
   );
