@@ -104,6 +104,14 @@ const ProfilePage = () => {
           <div className='ml-10'>
             <Cards />
           </div>
+          <div className='ml-10 mb-5'>
+            <button className='mr-5 rounded-md text-white bg-black p-2'>
+              Event
+            </button>
+            <button className='rounded-md text-white bg-black p-2'>
+              Venue
+            </button>
+          </div>
           <div className='flex flex-row flex-wrap gap-5 justify-between ml-10 rounded-md w-82'>
             <div className=''>
               <span>Add New Events</span>
